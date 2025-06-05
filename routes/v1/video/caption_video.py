@@ -124,7 +124,7 @@ def caption_video_v1(job_id, data):
                 return {"error": output['error']}, "/v1/video/caption", 400
 
         # If processing was successful, output is the file path
-        output_path = output
+        output_path = output[0]
         logger.info(f"Job {job_id}: Captioning process completed successfully")
 
         # Upload the captioned video
@@ -135,7 +135,7 @@ def caption_video_v1(job_id, data):
         # os.remove(output_path)
         logger.info(f"Job {job_id}: Cleaned up local output file")
 
-        return output_path, "/v1/video/caption", 200
+        return output_path, "/v1/video/caption", 200, output[1], output[2]
 
     except Exception as e:
         logger.error(f"Job {job_id}: Error during captioning process - {str(e)}", exc_info=True)

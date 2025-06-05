@@ -785,7 +785,7 @@ def process_captioning_v1(video_url, captions, settings, replace, job_id, langua
             logger.error(f"Job {job_id}: FFmpeg error: {stderr_output}")
             return {"error": f"FFmpeg error: {stderr_output}"}
 
-        return output_path
+        return output_path, video_path, subtitle_path
 
     except Exception as e:
         logger.error(f"Job {job_id}: Error in process_captioning_v1: {str(e)}", exc_info=True)

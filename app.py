@@ -120,6 +120,8 @@ def create_app():
                         "job_id": job_id,
                         "response": response[0] if response[2] == 200 else None,
                         "message": "success" if response[2] == 200 else response[0],
+                        "originalFile": response[3] if len(response) > 3 else "",
+                        "subtitlefile": response[4] if len(response) > 3 else "",
                         "run_time": round(run_time, 3),
                         "queue_time": 0,
                         "total_time": round(run_time, 3),
