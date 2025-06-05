@@ -129,13 +129,13 @@ def caption_video_v1(job_id, data):
 
         # Upload the captioned video
         # cloud_url = upload_file(output_path)
-        logger.info(f"Job {job_id}: Captioned video uploaded to cloud storage: {cloud_url}")
+        logger.info(f"Job {job_id}: Captioned video uploaded to cloud storage: {output_path}")
 
         # Clean up the output file after upload
         # os.remove(output_path)
         logger.info(f"Job {job_id}: Cleaned up local output file")
 
-        return cloud_url, "/v1/video/caption", 200
+        return output_path, "/v1/video/caption", 200
 
     except Exception as e:
         logger.error(f"Job {job_id}: Error during captioning process - {str(e)}", exc_info=True)
