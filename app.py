@@ -205,5 +205,10 @@ app = create_app()
 def download_file(filename):
     return send_from_directory('storage_data', filename, as_attachment=True)
 
+@app.route('/localdelete/<filename>')
+def download_file(filename):
+    os.remove("/app/storage_data/"+filename)
+    return {"filename": filename, "deleted": "successful"}
+    
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080)

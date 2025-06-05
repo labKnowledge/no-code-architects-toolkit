@@ -80,12 +80,12 @@ def caption_video(job_id, data):
         logger.info(f"Job {job_id}: Captioning process completed successfully")
 
         # Upload the captioned video using the unified upload_file() method
-        cloud_url = upload_file(output_filename)
+        # cloud_url = upload_file(output_filename)
 
-        logger.info(f"Job {job_id}: Captioned video uploaded to cloud storage: {cloud_url}")
+        logger.info(f"Job {job_id}: Captioned video uploaded to cloud storage: {output_filename}")
 
         # Return the cloud URL for the uploaded file
-        return cloud_url, "/caption-video", 200
+        return output_filename, "/caption-video", 200
 
     except Exception as e:
         logger.error(f"Job {job_id}: Error during captioning process - {str(e)}", exc_info=True)
